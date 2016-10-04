@@ -8,8 +8,8 @@ package dataTypes;
  */
 public class Vector {
 
-	final int N;   //the length of the vector
-	double[] data; //array of vector's components
+	final int N;   // the length of the vector
+	double[] data; // array of vector's components
 	
 	/**
 	 * Create a zero vector of length N
@@ -42,13 +42,15 @@ public class Vector {
 	 * @return the inner product of this vector and input vector
 	 */
 	public double dot(Vector other) {
-		if(this.N != other.N)
+		if(this.N != other.N) {
 			throw new RuntimeException("Dimensions don't agree.");
+		}
 		
 		double sum = 0.0;
 		
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < N; i++) {
 			sum += (this.data[i] * other.data[i]);
+		}
 		
 		return sum;
 	}
@@ -64,8 +66,9 @@ public class Vector {
 	 * @return the distance between two vectors
 	 */
 	public double distance(Vector other) {
-		if(this.N != other.N)
+		if(this.N != other.N) {
 			throw new RuntimeException("Dimensions don't agree.");
+		}
 		
 		return this.subtract(other).magnitude();
 	}
@@ -74,12 +77,14 @@ public class Vector {
 	 * @return this + other
 	 */
 	public Vector add(Vector other) {
-		if(this.N != other.N)
+		if(this.N != other.N) {
 			throw new RuntimeException("Dimensions don't agree.");
+		}
 		
 		Vector result = new Vector(N);
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < N; i++) {
 			result.data[i] = this.data[i] + other.data[i];
+		}
 		
 		return result;
 	}
@@ -88,12 +93,14 @@ public class Vector {
 	 * @return this - other
 	 */
 	public Vector subtract(Vector other) {
-		if(this.N != other.N)
+		if(this.N != other.N) {
 			throw new RuntimeException("Dimensions don't agree.");
+		}
 		
 		Vector result = new Vector(N);
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < N; i++) {
 			result.data[i] = this.data[i] - other.data[i];
+		}
 		
 		return result;
 	}
@@ -111,8 +118,9 @@ public class Vector {
 	 */
 	public Vector scalarMult(double factor) {
 		Vector result = new Vector(N);
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < N; i++) {
 			result.data[i] = factor * this.data[i];
+		}
 		
 		return result;
 	}
@@ -121,7 +129,10 @@ public class Vector {
 	 * @return the unit vector of this vector
 	 */
 	public Vector unitVector() {
-		if(this.magnitude() == 0.0) throw new RuntimeException("Cannot get the unit vector of the Zero-vector.");
+		if(this.magnitude() == 0.0) {
+			throw new RuntimeException("Cannot get the unit vector of the Zero-vector.");
+		}
+
 		return this.scalarMult(1.0 / this.magnitude()); //unit v = v / mag v
 	}
 	
@@ -129,7 +140,10 @@ public class Vector {
 	 * @return the Cartesian cross product of this x other
 	 */
 	public Vector cross(Vector other) {
-		if(N != 3 || other.N != 3) throw new RuntimeException("Can only compute the cross product of 2 3-D vector's.");
+		if(N != 3 || other.N != 3) {
+			throw new RuntimeException("Can only compute the cross product of 2 3-D vector's.");
+		}
+
 		Vector result = new Vector(3);
 		
 		//this = u; other = v
@@ -145,17 +159,20 @@ public class Vector {
 	 * @return if this vector is equal to the object
 	 */
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Vector)) 
+		if(!(obj instanceof Vector)) {
 			return false;
+		}
 		
 		Vector other = (Vector)obj;
 		
-		if(this.N != other.N) //must have same size
+		if(this.N != other.N) { //must have same size
 			return false;
+		}
 		
 		for(int i = 0; i < this.N; i++) {
-			if(this.coordinate(i) != other.coordinate(i))
+			if(this.coordinate(i) != other.coordinate(i)) {
 				return false;
+			}
 		}
 		
 		return true;
@@ -167,8 +184,9 @@ public class Vector {
 	public String toString() {
 		String result = data[0] + "";
 		
-		for(int i = 1; i < N; i++) 
+		for(int i = 1; i < N; i++) {
 			result += ", " + data[i];
+		}
 		
 		return "[" + result + "]";
 	}

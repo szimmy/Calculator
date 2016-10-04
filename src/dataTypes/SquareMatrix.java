@@ -48,12 +48,15 @@ public class SquareMatrix extends Matrix {
 	 * @return if this square matrix is diagonal
 	 */
 	public boolean isDiagonal() {
-		for(int i = 0; i < this.N; i++)
-			for(int j = 0; j < this.N; j++) {
-				if(i != j) 
-					if(this.get(i, j) != 0)
+		for(int i = 0; i < this.N; i++) {
+			for (int j = 0; j < this.N; j++) {
+				if (i != j) {
+					if (this.get(i, j) != 0) {
 						return false;
+					}
+				}
 			}
+		}
 
 		return true;
 	}
@@ -63,13 +66,15 @@ public class SquareMatrix extends Matrix {
 	 * @return if this square matrix is upper diagonal
 	 */
 	public boolean isUpperDiagonal() {
-		for(int i = 0; i < this.N; i++)
-			for(int j = 0; j < this.N; j++) {
-				if(i > j) 
-					if(this.get(i, j) != 0)
+		for(int i = 0; i < this.N; i++) {
+			for (int j = 0; j < this.N; j++) {
+				if (i > j) {
+					if (this.get(i, j) != 0) {
 						return false;
+					}
+				}
 			}
-
+		}
 		return true;
 	}
 
@@ -78,12 +83,15 @@ public class SquareMatrix extends Matrix {
 	 * @return if this square matrix is lower diagonal
 	 */
 	public boolean isLowerDiagonal() {
-		for(int i = 0; i < this.N; i++)
-			for(int j = 0; j < this.N; j++) {
-				if(i < j) 
-					if(this.get(i, j) != 0)
+		for(int i = 0; i < this.N; i++) {
+			for (int j = 0; j < this.N; j++) {
+				if (i < j) {
+					if (this.get(i, j) != 0) {
 						return false;
+					}
+				}
 			}
+		}
 
 		return true;
 	}
